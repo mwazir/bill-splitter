@@ -21,16 +21,25 @@
 // - User auth and account setup so individual bill history is saved
 
 
-
+import { useState } from 'react';
 import BillForm from './components/BillForm';
 import BillDisplay from './components/BillDisplay';
 import './App.css';
 
+
+
 function App() {
+  const [billAmount, setBillAmount] = useState(0);
+
+  const updateBillAmount = (event) => {
+    setBillAmount(event.target.value);
+  }
+  
   return (
     <div className="App">
-      <BillForm />
-      <BillDisplay />
+      <BillForm updateBillAmount={(event) => updateBillAmount(event)}/>
+      <BillDisplay grossBill={billAmount}  />
+      <button>Test Button</button>
     </div>
   );
 }

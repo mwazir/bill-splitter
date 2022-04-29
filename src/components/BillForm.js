@@ -1,11 +1,23 @@
-const BillForm = () => {
+import { useState } from 'react'
+
+const BillForm = (props) => {
+    
+    //console.log(billAmount);
+
+    const handleChange = (event) => {
+        console.log(event.target.value);
+        // props.updateBillAmount;
+    }
+
+
+
     return (
         <>
             <form action="">
                 <label htmlFor="restaurant-name">Restaurant Name</label>
                 <input type="text" />
                 <label htmlFor="bill-amount">Bill Amount</label>
-                <input type="text" />
+                <input type="text" name="bill-amount" onChange={props.updateBillAmount}/>
                 <fieldset>
                     <legend>Select Tip %</legend>
                     <label htmlFor="5%">5%</label>
@@ -24,6 +36,7 @@ const BillForm = () => {
                 </fieldset>
                 <label htmlFor="group-size">Number of People</label>
                 <input type="text" name="group-size" />
+                
             </form>
         </>
     )
