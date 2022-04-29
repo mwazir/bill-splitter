@@ -23,12 +23,14 @@
 
 
 import BillForm from './components/BillForm';
+import BillDisplay from './components/BillDisplay';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <BillForm />
+      <BillDisplay />
     </div>
   );
 }
