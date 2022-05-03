@@ -1,25 +1,33 @@
 const BillDisplay = (props) => {
     //console.log(props)
     return (
-        <>
+        <div className="bill-display-container">
             <div className="gross-bill-per-person">
-                <p>Gross Bill</p>
-                <p>/ Person</p>
-                <p>{props.grossBill}</p>
+                <div className="display-label-container">
+                        <p>Gross Bill</p>
+                        <p className="per-person-label">/ Person</p>
+                </div>
+                <p className="amount-display">{props.grossBillPerPersonState}</p>
             </div>
             <div className="tip-per-person">
-                <p>Tip Amount</p>
-                <p>/ Person</p>
-                <p>$0.00</p>
+                <div className="display-label-container">
+                    <p>Tip Amount</p>
+                    <p className="per-person-label">/ Person</p>
+                </div>
+                <p className="amount-display">{props.tipPerPersonState}</p>
             </div>
             <div className="total-bill-per-person">
-                <p>Total Bill</p>
-                <p>/ Person</p>
-                <p>$0.00</p>
+                <div className="display-label-container">
+                    <p>Total Bill</p>
+                        <p className="per-person-label">/ Person</p>
+                </div>
+                    <p className="amount-display">{props.totalBillPerPersonState}</p>
             </div>
-            <button>Save</button>
-            <button>Reset</button>
-        </>
+            <div className="button-container">
+                <button className="save-btn">SAVE</button>
+                <button className="reset-btn" onClick={props.resetForm}>RESET</button>
+            </div>
+        </div>
     )
 }
 

@@ -1,0 +1,17 @@
+/* Typography Partial */
+
+html, body {
+    font-size: 125%;
+    font-family: $ff-primary;
+    font-weight: $fw-bold;
+}
+
+h1 {
+    @include fontSize(48);
+}
+
+label, input, button {
+    @include fontSize(24);
+    font-family: $ff-primary;
+    font-weight: $fw-bold;
+}
