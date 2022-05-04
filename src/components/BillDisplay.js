@@ -1,5 +1,4 @@
 const BillDisplay = (props) => {
-    //console.log(props)
     return (
         <div className="bill-display-container">
             <div className="gross-bill-per-person">

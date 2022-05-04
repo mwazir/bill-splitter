@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 const BillForm = (props) => {
-    
     return (
         <div className="bill-form-container">
             <form action="">

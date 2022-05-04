@@ -1,3 +1,4 @@
+// imports
 import { useState, useEffect } from 'react';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 import firebase from './firebase';
@@ -21,25 +22,12 @@ function App() {
   // Defining tip related states
   const [tipRadioButtonValue, setTipRadioButtonValue] = useState(0);
   const [tipTextInputValue, setTipTextInputValue] = useState("");
-  const [radioButtonChecked, setRadioButtonChecked] = useState
-  ({
-    fivePercent : false,
-    tenPercnt: false,
-    fifteenPercent: false,
-    twentyFivePercent: false,
-    fiftyPercent: false,
-    custom: false,
-  })
 
   // Defining transaction history states
   const [savedTransactions, setSavedTransactions] = useState([]);
 
   const savedTransactionsArray = [];
-  
-  let radioButtonValueVar;
-  let tipTextInputValueVar;
   let tipOptionSelectionType;
-  let tipPercentage = 0;
 
   // function to store restaurant name in state
   const handleUpdateRestaurant = (event) => {
@@ -56,43 +44,41 @@ function App() {
     tipOptionSelectionType = event.target.type
     setTipTextInputValue(() => "");
     
-    tipOptionSelectionType === "radio" ? radioButtonValueVar = event.target.value : tipTextInputValueVar = event.target.value
     tipOptionSelectionType === "radio" ? setTipRadioButtonValue(event.target.value) : setTipTextInputValue(parseInt(event.target.value));
     tipOptionSelectionType === "number" ? setCustomTipEnabled(true) : setCustomTipEnabled(false);
   }
 
-  useEffect(() => {
-    calculateTip();
-  }, [tipRadioButtonValue, tipTextInputValue, grossBillAmount, groupSizeInput])
-
+  // function to calculate tip
   const calculateTip = () => {
     customTipEnabled === true ? setGrossTipAmount(tipTextInputValue) : setGrossTipAmount(grossBillAmount * tipRadioButtonValue);
   }
 
+  // function to update group size
   const handleUpdateGroupSize = (event) => {
     setGroupSizeInput(parseInt(event.target.value));
   }
 
-  useEffect(() => {
-    calculateAmountsPerPerson();
-  }, [grossBillAmount, grossTipAmount, groupSizeInput])
-
+  // function to calculate amounts per person
   const calculateAmountsPerPerson = () => {
-    groupSizeInput > 0 ? divideAmountsByGroup() : divideAmountsByOne()    
+    groupSizeInput > 0 ? divideAmountsByGroup() : divideAmountsByOne()
   }
 
+  /// function to divide amounts by group size if group size greater than 0
   const divideAmountsByGroup = () => {
     setGrossBillPerPerson(grossBillAmount / groupSizeInput);
     setTipPerPerson(grossTipAmount / groupSizeInput);
     setTotalBillPerPerson((grossBillAmount + grossTipAmount) / groupSizeInput);
   }
 
+
+// function to divide amounts by one if group size is less than 0 (default minimum to 1 person)
   const divideAmountsByOne = () => {
     setGrossBillPerPerson(grossBillAmount / 1);
     setTipPerPerson(grossTipAmount / 1);
     setTotalBillPerPerson((grossBillAmount + grossTipAmount) / 1);
   }
 
+  // function to reset form back to default values
   const resetForm = () => {
     setRestaurantName("");
     setGrossBillAmount("");
@@ -105,10 +91,23 @@ function App() {
     return + (Math.round(num + "e+2") + "e-2");
   }
 
+  // recalculate tip whenever tip % is changed, bill amount is changed, or group size is changed 
+  useEffect(() => {
+    calculateTip();
+  }, [tipRadioButtonValue, tipTextInputValue, grossBillAmount, groupSizeInput])
+
+  // recalculate amounts per person when tip amount is changed, bill amount is changed, or group size is changed 
+  useEffect(() => {
+    calculateAmountsPerPerson();
+  }, [grossBillAmount, grossTipAmount, groupSizeInput])
+
+  // render transaction history from database upon page load
   useEffect(() => {
     renderTransactionHistory();
   }, [])
 
+ 
+  // update database with bill information when user clicks save
   const handleUpdateDatabase = (event) => {
     event.preventDefault();
     
@@ -126,6 +125,7 @@ function App() {
     renderTransactionHistory();
   }
 
+  // render transaction history from data retrieved from database
   const renderTransactionHistory = (event) => {
     const database = getDatabase(firebase)
     const dbRef = ref(database)
@@ -141,6 +141,7 @@ function App() {
     })
   }
   
+  // return statement for rendering purposes
   return (
     <div className="App">
       <header>

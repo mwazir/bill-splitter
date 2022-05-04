@@ -283,6 +283,7 @@ h1, p, label, input, button {
   margin: 0 auto;
 }
 
+/* Footer Styles Partial */
 footer {
   width: 100%;
   height: 50px;
@@ -321,6 +322,7 @@ footer p {
           align-items: center;
 }
 
+/* Bill Splitter App Styles */
 header {
   width: 100%;
 }
@@ -558,6 +560,7 @@ h1 {
   background: hsl(172deg, 61%, 76%);
 }
 
+/* Bill Transaction History Styles */
 .bill-history-section {
   width: 100%;
 }
