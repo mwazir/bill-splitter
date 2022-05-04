@@ -44,7 +44,16 @@ function App() {
   const [totalBillPerPerson, setTotalBillPerPerson] = useState(0);
   
   const [tipRadioButtonValue, setTipRadioButtonValue] = useState(0);
-  const [tipTextInputValue, setTipTextInputValue] = useState(0);
+  const [tipTextInputValue, setTipTextInputValue] = useState("");
+  const [radioButtonChecked, setRadioButtonChecked] = useState
+  ({
+    fivePercent : false,
+    tenPercnt: false,
+    fifteenPercent: false,
+    twentyFivePercent: false,
+    fiftyPercent: false,
+    custom: false,
+  })
 
   const [savedTransactions, setSavedTransactions] = useState([]);
 
@@ -66,10 +75,11 @@ function App() {
 
   const handleUpdateGrossTipAmount = (event) => {
     tipOptionSelectionType = event.target.type
+    setTipTextInputValue(() => "");
     
     tipOptionSelectionType === "radio" ? radioButtonValueVar = event.target.value : tipTextInputValueVar = event.target.value
     tipOptionSelectionType === "radio" ? setTipRadioButtonValue(event.target.value) : setTipTextInputValue(parseInt(event.target.value));
-    tipOptionSelectionType === "radio" ? (radioButtonValueVar === "custom" ? setCustomTipEnabled(true) : setCustomTipEnabled(false)) : console.log("custom box edited but not selected");
+    tipOptionSelectionType === "number" ? setCustomTipEnabled(true) : setCustomTipEnabled(false);
   }
 
   useEffect(() => {
@@ -120,8 +130,6 @@ function App() {
   useEffect(() => {
     renderTransactionHistory();
   }, [])
-
-  console.log(savedTransactions);
 
   const handleUpdateDatabase = (event) => {
     event.preventDefault();
@@ -175,6 +183,9 @@ function App() {
               updateGrossTipAmount={(event) => handleUpdateGrossTipAmount(event)}
               groupSizeState={groupSizeInput}
               updateGroupSize={(event) => handleUpdateGroupSize(event)}
+              customTipEnabledState={customTipEnabled}
+              tipTextInputValueState={tipTextInputValue}
+              // checkedStatus={}
             />
             <BillDisplay
               className="bill-display"
@@ -189,33 +200,35 @@ function App() {
         </div>
       </section>
       <section className="bill-history-section">
-        <h2>Bill History</h2>
-        <table className="transaction-table">
-          <thead>
-            <tr>
-              <th>Restaurant</th>
-              <th>Gross Bill ($)</th>
-              <th>Gross Tip ($)</th>
-              <th>Group Size</th>
-              <th>Bill/Person ($)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {savedTransactions.map((transaction) => {
-              return (
-                <>
-                  <tr key={transaction.key}>
-                    <td>{transaction.restaurantName}</td>
-                    <td>{transaction.grossBill}</td>
-                    <td>{transaction.tipAmount}</td>
-                    <td>{transaction.numOfPeople}</td>
-                    <td>{transaction.billPerPerson}</td>
-                  </tr>
-                </>
-              )
-            })}
-          </tbody>
-        </table>
+        <div className="wrapper">
+          <h2>Bill History</h2>
+          <table className="transaction-table">
+            <thead>
+              <tr>
+                <th>Restaurant</th>
+                <th>Gross Bill ($)</th>
+                <th>Gross Tip ($)</th>
+                <th>Group Size</th>
+                <th>Bill/Person ($)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {savedTransactions.map((transaction) => {
+                return (
+                  <>
+                    <tr key={transaction.key}>
+                      <td>{transaction.restaurantName}</td>
+                      <td>{transaction.grossBill}</td>
+                      <td>{transaction.tipAmount}</td>
+                      <td>{transaction.numOfPeople}</td>
+                      <td>{transaction.billPerPerson}</td>
+                    </tr>
+                  </>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </section>
       <footer>
         <div className="wrapper">

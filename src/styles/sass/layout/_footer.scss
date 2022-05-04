@@ -10,5 +10,6 @@ footer {
 
     p {
         @include fontSize(16);
+        text-align: center;
     }
 }

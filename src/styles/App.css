@@ -301,6 +301,7 @@ footer {
 }
 footer p {
   font-size: 0.8rem;
+  text-align: center;
 }
 
 /* Home Page Partial */
@@ -341,12 +342,25 @@ h1 {
   border-radius: 25px;
   padding: 40px;
 }
+@media screen and (max-width: 1200px) {
+  .bill-splitter-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 
 .bill-form-container {
   width: 50%;
   border-radius: 25px;
   background: hsl(0deg, 0%, 100%);
   padding: 2rem;
+}
+@media screen and (max-width: 1200px) {
+  .bill-form-container {
+    width: 100%;
+  }
 }
 .bill-form-container form {
   display: -webkit-box;
@@ -426,6 +440,12 @@ h1 {
   color: hsl(183deg, 100%, 15%);
   background: hsl(172deg, 61%, 76%);
 }
+@media screen and (max-width: 1200px) {
+  .bill-form-container .tip-button-container label {
+    -ms-flex-preferred-size: calc(50% - 1rem);
+        flex-basis: calc(50% - 1rem);
+  }
+}
 .bill-form-container .tip-button-container .custom-label {
   display: none;
 }
@@ -464,6 +484,11 @@ h1 {
   outline: none;
   border: 2px solid hsl(172deg, 67%, 45%);
 }
+@media screen and (max-width: 1200px) {
+  .bill-form-container .tip-button-container .custom-input {
+    width: calc(50% - 1rem);
+  }
+}
 .bill-form-container .tip-button-container input[type=radio]:checked + label {
   background: hsl(172deg, 67%, 45%);
   color: hsl(183deg, 100%, 15%);
@@ -474,6 +499,11 @@ h1 {
   border-radius: 25px;
   padding: 2rem;
   background-color: hsl(183deg, 100%, 15%);
+}
+@media screen and (max-width: 1200px) {
+  .bill-display-container {
+    width: 100%;
+  }
 }
 .bill-display-container .gross-bill-per-person, .bill-display-container .tip-per-person, .bill-display-container .total-bill-per-person {
   display: -webkit-box;
@@ -501,6 +531,7 @@ h1 {
 .bill-display-container .amount-display {
   font-size: 2.3rem;
   width: 50%;
+  min-width: 200px;
   color: hsl(172deg, 67%, 45%);
   text-align: center;
 }
@@ -527,12 +558,16 @@ h1 {
   background: hsl(172deg, 61%, 76%);
 }
 
+.bill-history-section {
+  width: 100%;
+}
 .bill-history-section h2 {
   text-align: center;
   color: hsl(186deg, 14%, 43%);
 }
 .bill-history-section .transaction-table {
   table-layout: fixed;
+  max-width: 100%;
 }
 .bill-history-section .transaction-table tr {
   font-size: 0.8rem;
@@ -547,4 +582,56 @@ h1 {
   height: 50px;
   text-align: center;
   color: hsl(186deg, 14%, 43%);
+}
+@media screen and (max-width: 480px) {
+  .bill-history-section .transaction-table {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .bill-history-section table, .bill-history-section thead, .bill-history-section tbody, .bill-history-section th, .bill-history-section td, .bill-history-section tr {
+    display: block;
+  }
+  .bill-history-section thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .bill-history-section td {
+    position: relative;
+    padding-left: 50%;
+  }
+  .bill-history-section td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  .bill-history-section tr:nth-of-type(odd) {
+    border-bottom: 1px solid black;
+  }
+  .bill-history-section td:nth-of-type(1):before {
+    content: "Restaurant";
+    color: black;
+  }
+  .bill-history-section td:nth-of-type(2):before {
+    content: "Gross Bill ($)";
+    color: black;
+  }
+  .bill-history-section td:nth-of-type(3):before {
+    content: "Gross Tip ($)";
+    color: black;
+  }
+  .bill-history-section td:nth-of-type(4):before {
+    content: "Group Size";
+    color: black;
+  }
+  .bill-history-section td:nth-of-type(5):before {
+    content: "Bill/Person ($)";
+    color: black;
+  }
 }

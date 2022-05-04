@@ -26,7 +26,11 @@ h1 {
     max-width: 1200px;
     background: $clr-white;
     border-radius: 25px;
-    padding: 40px;   
+    padding: 40px;  
+    
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
 }
 
 .bill-form-container {
@@ -34,6 +38,10 @@ h1 {
     border-radius: 25px;
     background: $clr-white;
     padding: 2rem;
+
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
 
 
     form {
@@ -104,7 +112,11 @@ h1 {
                 cursor: pointer;
                 color: $clr-darkGreen;
                 background: $clr-lighterGreen;
-            }            
+            }    
+            
+            @media screen and (max-width: 1200px) {
+                flex-basis: calc(50% - 1rem);
+            }
         }        
 
         .custom-label {
@@ -132,6 +144,10 @@ h1 {
                 outline: none;
                 border: 2px solid $clr-green;
             }
+
+            @media screen and (max-width: 1200px) {
+                width: calc(50% - 1rem);
+            }
         }
 
         input[type="radio"]:checked + label {
@@ -146,6 +162,10 @@ h1 {
     border-radius: 25px;
     padding: 2rem;
     background-color: $clr-darkGreen;
+
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
 
     .gross-bill-per-person, .tip-per-person, .total-bill-per-person {
         display: flex;
@@ -169,6 +189,7 @@ h1 {
     .amount-display {
         @include fontSize(46);
         width: 50%;
+        min-width: 200px;
         color: $clr-green;
         text-align: center;
     }
@@ -196,6 +217,7 @@ h1 {
 }
 
 .bill-history-section {
+    width: 100%;
 
     h2 {
         text-align: center;
@@ -204,6 +226,7 @@ h1 {
 
     .transaction-table {
         table-layout: fixed;
+        max-width: 100%;
 
         tr {
             @include fontSize(16);
@@ -221,6 +244,68 @@ h1 {
             text-align: center;
             color: $clr-grey;
         }
+
+        @media screen and (max-width: 480px) {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        td {
+            position: relative;
+            padding-left: 50%;
+            
+        }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        tr:nth-of-type(odd) {
+            border-bottom: 1px solid black;
+        }
+
+        td:nth-of-type(1):before {
+            content: "Restaurant";
+            color: black;
+        }
+        
+        td:nth-of-type(2):before {
+            content: "Gross Bill ($)";
+            color: black;
+        }
+        
+        td:nth-of-type(3):before {
+            content: "Gross Tip ($)";
+            color: black;
+        }
+        
+        td:nth-of-type(4):before {
+            content: "Group Size";
+            color: black;
+        }
+        
+        td:nth-of-type(5):before {
+            content: "Bill/Person ($)";
+            color: black;
+        }    
     }
 }
 
