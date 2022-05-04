@@ -24,7 +24,7 @@ const BillDisplay = (props) => {
                     <p className="amount-display">{props.totalBillPerPersonState}</p>
             </div>
             <div className="button-container">
-                <button className="save-btn">SAVE</button>
+                <button className="save-btn" onClick={props.updateDatabase}>SAVE</button>
                 <button className="reset-btn" onClick={props.resetForm}>RESET</button>
             </div>
         </div>

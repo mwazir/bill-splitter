@@ -277,8 +277,34 @@ h1, p, label, input, button {
   padding: 0;
 }
 
+.wrapper {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+footer {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: hsl(183deg, 100%, 15%);
+  color: hsl(0deg, 0%, 100%);
+  margin: 1rem 0 0 0;
+}
+footer p {
+  font-size: 0.8rem;
+}
+
 /* Home Page Partial */
-.App {
+.App, .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -294,7 +320,12 @@ h1, p, label, input, button {
           align-items: center;
 }
 
+header {
+  width: 100%;
+}
+
 h1 {
+  width: 100%;
   margin: 3rem 0 3rem 0;
   text-align: center;
   color: hsl(186deg, 14%, 43%);
@@ -304,7 +335,7 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   background: hsl(0deg, 0%, 100%);
   border-radius: 25px;
@@ -314,7 +345,7 @@ h1 {
 .bill-form-container {
   width: 50%;
   border-radius: 25px;
-  background: lightblue;
+  background: hsl(0deg, 0%, 100%);
   padding: 2rem;
 }
 .bill-form-container form {
@@ -494,4 +525,26 @@ h1 {
   cursor: pointer;
   color: hsl(183deg, 100%, 15%);
   background: hsl(172deg, 61%, 76%);
+}
+
+.bill-history-section h2 {
+  text-align: center;
+  color: hsl(186deg, 14%, 43%);
+}
+.bill-history-section .transaction-table {
+  table-layout: fixed;
+}
+.bill-history-section .transaction-table tr {
+  font-size: 0.8rem;
+}
+.bill-history-section .transaction-table th {
+  font-size: 1rem;
+  width: 200px;
+  height: 50px;
+}
+.bill-history-section .transaction-table td {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  color: hsl(186deg, 14%, 43%);
 }

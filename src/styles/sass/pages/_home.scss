@@ -1,21 +1,28 @@
 /* Home Page Partial */
 
-.App {
+.App, .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+header {
+    width: 100%;
+}
+
+
 h1 {
+    width: 100%;
     margin: 3rem 0 3rem 0;
     text-align: center;
     color: $clr-grey;
 }
 
+
 .bill-splitter-container {
     display: flex;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
     background: $clr-white;
     border-radius: 25px;
@@ -25,7 +32,7 @@ h1 {
 .bill-form-container {
     width: 50%;
     border-radius: 25px;
-    background: lightblue;
+    background: $clr-white;
     padding: 2rem;
 
 
@@ -184,6 +191,35 @@ h1 {
             cursor: pointer;
             color: $clr-darkGreen;
             background: $clr-lighterGreen;
+        }
+    }
+}
+
+.bill-history-section {
+
+    h2 {
+        text-align: center;
+        color: $clr-grey;
+    }
+
+    .transaction-table {
+        table-layout: fixed;
+
+        tr {
+            @include fontSize(16);
+        }
+
+        th {
+            @include fontSize(20);
+            width: 200px;
+            height: 50px;
+        }
+
+        td {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            color: $clr-grey;
         }
     }
 }

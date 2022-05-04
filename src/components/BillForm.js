@@ -2,15 +2,6 @@ import { useState } from 'react'
 
 const BillForm = (props) => {
     
-    //console.log(billAmount);
-
-    const handleChange = (event) => {
-        console.log(event.target.value);
-        // props.updateBillAmount;
-    }
-
-
-
     return (
         <div className="bill-form-container">
             <form action="">
