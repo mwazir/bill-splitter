@@ -1,0 +1,5 @@
+/* Mixins Partial */
+
+@mixin fontSize($sizeValue) {
+    font-size: (calc($sizeValue/20)) * 1rem;
+}

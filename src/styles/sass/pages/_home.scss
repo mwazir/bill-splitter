@@ -1,0 +1,221 @@
+/* Home Page Partial */
+
+.App, .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bill Splitter App Styles */
+header {
+    width: 100%;
+}
+
+h1 {
+    width: 100%;
+    margin: 3rem 0 3rem 0;
+    text-align: center;
+    color: $clr-grey;
+}
+
+.bill-splitter-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: $clr-white;
+    border-radius: 25px;
+    padding: 40px;  
+    
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
+}
+
+.bill-form-container {
+    width: 50%;
+    border-radius: 25px;
+    background: $clr-white;
+    padding: 2rem;
+
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
+
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+  
+
+    .form-label {
+        @include fontSize(20);
+        color: $clr-grey;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .form-text-input {
+        border: none;
+        border: 2px solid $clr-white;
+        border-radius: 5px;
+        margin: 0 0 1rem 0;
+        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+        background-color: $clr-veryLightGreen;
+        color: $clr-darkGreen;
+        text-align: right;
+
+        &::placeholder {
+            color: $clr-lightGrey;
+        }
+
+        &:focus {
+            outline: none;
+            border: 2px solid $clr-green;
+        }
+    }
+
+    .restaurant-name-input {
+        text-align: left;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+
+        
+    }
+
+    .tip-button-container {
+        display: flex;
+        flex-wrap: wrap;
+        
+        label {
+            @include fontSize(24);
+            display: block;
+            flex-basis: calc(33% - 1rem);
+            margin: 0 1rem 1rem 0;
+            border-radius: 5px;
+            padding: 0.75rem 0 0.75rem 0;
+            background: $clr-darkGreen;
+            color: $clr-white;
+            text-align: center;
+            
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                color: $clr-darkGreen;
+                background: $clr-lighterGreen;
+            }    
+            
+            @media screen and (max-width: 1200px) {
+                flex-basis: calc(50% - 1rem);
+            }
+        }        
+
+        .custom-label {
+            display: none;
+        }
+
+        .custom-input {
+            width: calc(33% - 1rem);
+            margin: 0 0 0 0;
+            border: none;
+            border-radius: 5px;
+            padding: 0 0.5rem 0 0.5rem;
+            line-height: 0;
+            height: 57.6px;
+            color: $clr-darkGreen;
+            text-align: right;
+
+            &::placeholder {
+                text-align: center;
+                color: $clr-lightGrey;
+            }
+
+            &:focus,
+            &:active {
+                outline: none;
+                border: 2px solid $clr-green;
+            }
+
+            @media screen and (max-width: 1200px) {
+                width: calc(50% - 1rem);
+            }
+        }
+
+        input[type="radio"]:checked + label {
+            background: $clr-green;
+            color: $clr-darkGreen;
+        }
+    }
+}
+
+.bill-display-container {
+    width: 50%;
+    border-radius: 25px;
+    padding: 2rem;
+    background-color: $clr-darkGreen;
+
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
+
+    .gross-bill-per-person, .tip-per-person, .total-bill-per-person {
+        display: flex;
+        margin: 0 0 1rem 0;
+    }
+
+    .display-label-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 1.5rem 0;
+        width: 50%;
+        color: $clr-white;
+
+        .per-person-label {
+            @include fontSize(16);
+            margin: 0.25rem 0 0 0;
+            color: $clr-lightGrey;
+        }
+    }
+
+    .amount-display {
+        @include fontSize(46);
+        width: 50%;
+        min-width: 200px;
+        color: $clr-green;
+        text-align: center;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        margin: 1rem 0 1rem 0;
+        border: none;
+        border-radius: 10px;
+        background: $clr-green;
+        color: $clr-darkGreen;
+        height: 50px;
+
+        &:hover,
+        &:focus {
+            cursor: pointer;
+            color: $clr-darkGreen;
+            background: $clr-lighterGreen;
+        }
+    }
+}
+
+
+
+
+
