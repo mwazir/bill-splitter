@@ -65,8 +65,8 @@ function App() {
 
   /// function to divide amounts by group size if group size greater than 0
   const divideAmountsByGroup = () => {
-    setGrossBillPerPerson(grossBillAmount / groupSizeInput);
-    setTipPerPerson(grossTipAmount / groupSizeInput);
+    isNaN(grossBillAmount) != true ? setGrossBillPerPerson(grossBillAmount / groupSizeInput) : setGrossBillAmount(0);
+    setTipPerPerson(grossTipAmount / groupSizeInput)
     setTotalBillPerPerson((grossBillAmount + grossTipAmount) / groupSizeInput);
   }
 
@@ -164,7 +164,6 @@ function App() {
               updateGroupSize={(event) => handleUpdateGroupSize(event)}
               customTipEnabledState={customTipEnabled}
               tipTextInputValueState={tipTextInputValue}
-              // checkedStatus={}
             />
             <BillDisplay
               className="bill-display"
@@ -211,7 +210,7 @@ function App() {
       </section>
       <footer>
         <div className="wrapper">
-          <p>Created By Muhammad Wazir at Juno College</p>
+          <p>Created By Muhammad Wazir at Juno College of Technology</p>
         </div>
       </footer>
     </div>

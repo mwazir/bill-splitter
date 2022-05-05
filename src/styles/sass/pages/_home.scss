@@ -7,12 +7,10 @@
     align-items: center;
 }
 
-
 /* Bill Splitter App Styles */
 header {
     width: 100%;
 }
-
 
 h1 {
     width: 100%;
@@ -20,7 +18,6 @@ h1 {
     text-align: center;
     color: $clr-grey;
 }
-
 
 .bill-splitter-container {
     display: flex;
@@ -184,7 +181,7 @@ h1 {
         .per-person-label {
             @include fontSize(16);
             margin: 0.25rem 0 0 0;
-            color: $clr-grey;
+            color: $clr-lightGrey;
         }
     }
 
@@ -218,99 +215,7 @@ h1 {
     }
 }
 
-/* Bill Transaction History Styles */
-.bill-history-section {
-    width: 100%;
 
-    h2 {
-        text-align: center;
-        color: $clr-grey;
-    }
-
-    .transaction-table {
-        table-layout: fixed;
-        max-width: 100%;
-
-        tr {
-            @include fontSize(16);
-        }
-
-        th {
-            @include fontSize(20);
-            width: 200px;
-            height: 50px;
-        }
-
-        td {
-            width: 200px;
-            height: 50px;
-            text-align: center;
-            color: $clr-grey;
-        }
-
-        @media screen and (max-width: 480px) {
-            width: 100%;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        table, thead, tbody, th, td, tr {
-            display: block;
-        }
-
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        td {
-            position: relative;
-            padding-left: 50%;
-            
-        }
-
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-        }
-
-        tr:nth-of-type(odd) {
-            border-bottom: 1px solid black;
-        }
-
-        td:nth-of-type(1):before {
-            content: "Restaurant";
-            color: black;
-        }
-        
-        td:nth-of-type(2):before {
-            content: "Gross Bill ($)";
-            color: black;
-        }
-        
-        td:nth-of-type(3):before {
-            content: "Gross Tip ($)";
-            color: black;
-        }
-        
-        td:nth-of-type(4):before {
-            content: "Group Size";
-            color: black;
-        }
-        
-        td:nth-of-type(5):before {
-            content: "Bill/Person ($)";
-            color: black;
-        }    
-    }
-}
 
 
 

@@ -259,7 +259,6 @@ body {
 }
 
 /* Removing default number input styles (increase/decrease arrows)
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -528,7 +527,7 @@ h1 {
 .bill-display-container .display-label-container .per-person-label {
   font-size: 0.8rem;
   margin: 0.25rem 0 0 0;
-  color: hsl(186deg, 14%, 43%);
+  color: hsl(184deg, 14%, 56%);
 }
 .bill-display-container .amount-display {
   font-size: 2.3rem;
@@ -592,7 +591,12 @@ h1 {
   }
 }
 @media screen and (max-width: 480px) {
-  .bill-history-section table, .bill-history-section thead, .bill-history-section tbody, .bill-history-section th, .bill-history-section td, .bill-history-section tr {
+  .bill-history-section table,
+.bill-history-section thead,
+.bill-history-section tbody,
+.bill-history-section th,
+.bill-history-section td,
+.bill-history-section tr {
     display: block;
   }
   .bill-history-section thead tr {
@@ -605,9 +609,7 @@ h1 {
     padding-left: 50%;
   }
   .bill-history-section td:before {
-    /* Now like a table header */
     position: absolute;
-    /* Top/left values mimic padding */
     top: 6px;
     left: 6px;
     width: 45%;

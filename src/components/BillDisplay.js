@@ -18,9 +18,9 @@ const BillDisplay = (props) => {
             <div className="total-bill-per-person">
                 <div className="display-label-container">
                     <p>Total Bill</p>
-                        <p className="per-person-label">/ Person</p>
+                    <p className="per-person-label">/ Person</p>
                 </div>
-                    <p className="amount-display">{props.totalBillPerPersonState}</p>
+                <p className="amount-display">{props.totalBillPerPersonState}</p>
             </div>
             <div className="button-container">
                 <button className="save-btn" onClick={props.updateDatabase}>SAVE</button>
