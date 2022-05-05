@@ -11,6 +11,7 @@ function App() {
   const [restaurantName, setRestaurantName] = useState("");
   const [grossBillAmount, setGrossBillAmount] = useState("");
   const [customTipEnabled, setCustomTipEnabled] = useState(false);
+  const [resetStateEnabled, setResetStateEnabled] = useState(false);
   const [grossTipAmount, setGrossTipAmount] = useState(0);
   const [groupSizeInput, setGroupSizeInput] = useState(1);
 
@@ -46,6 +47,8 @@ function App() {
     
     tipOptionSelectionType === "radio" ? setTipRadioButtonValue(event.target.value) : setTipTextInputValue(parseInt(event.target.value));
     tipOptionSelectionType === "number" ? setCustomTipEnabled(true) : setCustomTipEnabled(false);
+    tipOptionSelectionType === "submit" ? setResetStateEnabled(true) : setResetStateEnabled(false);
+    console.log(tipOptionSelectionType)
   }
 
   // function to calculate tip
@@ -79,11 +82,12 @@ function App() {
   }
 
   // function to reset form back to default values
-  const resetForm = () => {
+  const resetForm = (event) => {
     setRestaurantName("");
     setGrossBillAmount("");
-    setGrossTipAmount(0);
+    //setGrossTipAmount(0);
     setGroupSizeInput(1);
+    handleUpdateGrossTipAmount(event);
   }
 
   // Round values to decimal places precisely
@@ -164,6 +168,7 @@ function App() {
               updateGroupSize={(event) => handleUpdateGroupSize(event)}
               customTipEnabledState={customTipEnabled}
               tipTextInputValueState={tipTextInputValue}
+              resetStateEnabled={resetStateEnabled}
             />
             <BillDisplay
               className="bill-display"
