@@ -11,7 +11,7 @@ const BillForm = (props) => {
                 <fieldset onChange={props.updateGrossTipAmount}>
                     <legend className="form-label">Select Tip %</legend>
                     <div className="tip-button-container">
-                        <input type="radio" id="0%" name="tip-percentage" value={0.00} readOnly />
+                        <input type="radio" id="0%" name="tip-percentage" value={0.00} checked={props.resetStateEnabled} readOnly />
                         <label htmlFor="5%" className="sr-only">0%</label>
                         <input type="radio" id="5%" name="tip-percentage" value={0.05} readOnly />
                         <label htmlFor="5%">5%</label>
